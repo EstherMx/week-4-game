@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+<!-- Bootstrap Container will hold everything -->
+  <div class="container">
+    <!-- Jumbotron holds the title section -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="title" style="color: red;">Crystals Collector</h1>
+      </div>
+    </div>
+    <div class="row"> 
+        <div class="col-sm-6">
+            <div id="">
+                <div class="instructions"">
+                    <p>You will be given a random number at the begining of the game</p>
+                </div>
+                <div class="instructions">
+                    <p>There are four Crystal below. By clicking on a crystal you'll add a specific amount to your total score</p>
+                </div>
+                <div class="instructions">
+                    <p>You win the game by matching your guessScore score to a random number, you lose the game if your total score goes above the random number</p>
+                </div>
+                <div class="instructions">
+                    <p>The value of each crystal is hidden from you until you click on it.</p>
+                </div>
+                <div class="instructions">
+                    <p>Each time when the game starts, the game will change the values of each crystal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<div  class="Container">
+        
+            <div class="row">
+                <div  class="col-sm-3">
+                    <div id="givenScore">
+                        
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <!-- <div id="winorloss"> -->
+                        <div id="win-lose">
+                            
+                        </div>
+                        <div>
+                            <h3 class="final">Wins: </h3>
+                            <span id="wins"></span>
+                        </div>
+                        <div>
+                            <h3 class="final">Losses: </h3>
+                            <span id="losses"></span>
+                        </div>
+                    <!-- </div>     -->
+                </div>
+                
+            </div>
+        
+        <div class="row">
+            <div class="col-sm-2">
+                    <div class="crystal">
+                        <img src="https://thumb7.shutterstock.com/display_pic_with_logo/623251/623251,1310641457,4/stock-vector-ruby-80973268.jpg" class="img-responsive img-circle my_images" id="red_crystal" alt="Crystal Game" height="75px" width="75px">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="crystal">
+                        <img src="https://www.worthy.com/blog/wp-content/uploads/2015/11/hope_diamond-Courtesy-Smithsonian-Photo-by-Chip-Clark-300x265.jpg" class="img-responsive img-circle my_images" id="blue_crystal" alt="Crystal Game" height="75px" width="75px">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="crystal">
+                        <img src="http://www.planetarygems.com/images2/yellow%20no%20heat%201.14%20cts.%20TRI%20SL16lot.jpg " alt="green crystal" class="img-responsive img-circle my_images" id="yellow_crystal" alt="Crystal Game" height="75px" width="75px">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="crystal">
+                        <img src="http://www.planetarygems.com/images/emerald%20COLOMBIANLapita%20Colombian%204.16cts%20HS%20ungrooved%20TUC12.jpg"  class= "img-responsive img-circle my_images" id="green_crystal" alt="Crystal Game" height="75px" width="75px">
+                    </div>
+                </div>
+           
+        
+        </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div id="solve
+                    ">
+                        <p class="final"> Your guessScore score is: </p>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div class="row">
+                <div class="col-sm-3">
+                    <div id= "currentScore">
+                    
+                    </div>
+                </div>
+            </div>
+        
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+var mainNumber;
+var blue;
+var yellow;
+var green;    
+var guessScore=0;
+var wins = 0;
+var losses = 0;
+var options = function(){
+     guessScore=0;
+     mainNumber = Math.floor(Math.random() * 102) + 19;
+    $("#givenScore").html(mainNumber);
+     redRandom= Math.floor(Math.random() * 12) + 1;
+     blue= Math.floor(Math.random() * 12) + 1;
+     yellow= Math.floor(Math.random() * 12) +1;
+     green= Math.floor(Math.random() * 12) + 1;
+     $("#currentScore").html(guessScore)
+}
+options();
+var mycode = function(){
+  if (guessScore===mainNumber) {
+                wins++;
+        $("#win-lose").html("<h2> You Win </h2>");
+        $("#wins").html("<h2>"+ wins +"</h2>");
+        console.log(wins);
+        
+        guessScore=0;
+         options();
+    }
+               
+    else if  (guessScore> mainNumber) {
+                
+                losses++;
+        $("#win-lose").html("<h2>Maybe next time!</h2>");
+        $("#losses").html("<h3>" + losses + "</h3>");
+            
+            guessScore=0;
+         options();
+        
+    }
+    else {
+        guessScore;
+        $("#currentScore").html(guessScore);
+    }
+}
+mycode();
+   $("#red_crystal").on("click", function() {
+        guessScore+= redRandom;
+        $("#currentScore").html(guessScore);
+        console.log(guessScore); 
+        mycode();
+   });
+   $("#blue_crystal").on("click", function() {
+        guessScore+= blue;
+        $("#currentScore").html(guessScore);
+        console.log(guessScore);
+        mycode();
+   });
+   $("#yellow_crystal").on("click", function() {
+        guessScore+= yellow;
+        $("#currentScore").html(guessScore);
+        console.log(guessScore);
+        mycode();
+   });
+   $("#green_crystal").on("click", function() {
+        
+        guessScore+= green;
+        $("#currentScore").html(guessScore);
+        console.log(guessScore);
+        mycode();
+   });
+               
+               
+});
+</script>
+</body>
+</html>
