@@ -15,4 +15,8 @@ color:white;
 }
 .final{
 	color: red;
+	font-size: 20px;
+}
+.score{
+	font-size: 25px;
 }
