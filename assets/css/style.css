@@ -1,6 +1,7 @@
 body{
 	
-	 background: url("http://wallpapercave.com/wp/DgVgDb2.jpg");
+	 /*background: url("http://wallpapercave.com/wp/DgVgDb2.jpg");*/
+	 background-color: #ADD8E6;
 }
 .instructions{
 text-align: center;
