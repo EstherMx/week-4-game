@@ -9,7 +9,8 @@ color:white;
 }
 .title{
 	text-align: center;
-	text-decoration: underline;
+	font-family: georgia, serif;
+	text-shadow: 1px 1px;
 }
 .final{
 	color: red;
